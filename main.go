@@ -24,14 +24,14 @@ func main() {
 
 	reader := io.MultiReader(rds...)
 	empty := struct{}{}
-	midMap := make(map[string]struct{})
+	lines := make(map[string]struct{})
 	scanner := bufio.NewScanner(reader)
 	for scanner.Scan() {
-		midMap[scanner.Text()] = empty
+		lines[scanner.Text()] = empty
 	}
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(len(midMap))
+	fmt.Println(len(lines))
 }
